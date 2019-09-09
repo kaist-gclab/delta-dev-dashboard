@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -58,7 +59,8 @@ namespace DeltaDevDashboard.AppServer.Dashboard
                 ProjectTitle = await _dashboardService.GetProjectTitle(),
                 ProjectDueDate = await _dashboardService.GetProjectDueDate(),
                 Repositories = await _gitHubService.GetRepositories(),
-                
+                GitHubStatistics = await _gitHubService.GetGitHubStatistics(),
+                GitHubTargets = await _gitHubService.GetGitHubTargets()
             };
             return response;
         }
@@ -68,6 +70,9 @@ namespace DeltaDevDashboard.AppServer.Dashboard
             public Instant CurrentInstant { get; set; }
             public string ProjectTitle { get; set; }
             public Instant ProjectDueDate { get; set; }
+            public List<string> Repositories { get; set; }
+            public GitHubStatistics GitHubStatistics { get; set; }
+            public GitHubTargets GitHubTargets { get; set; }
         }
     }
 }

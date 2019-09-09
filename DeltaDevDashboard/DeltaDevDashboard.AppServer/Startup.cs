@@ -43,6 +43,7 @@ namespace DeltaDevDashboard.AppServer
             services.AddScoped<DashboardRepository>();
             services.AddScoped<DashboardService>();
             services.AddScoped<GitHubService>();
+            services.AddScoped<GitHubHttpClientFactory>();
 
             services.AddScheduledTask<GitHubUpdateScheduledTask>();
             services.AddSingleton(DateTimeZoneProviders.Tzdb[_configuration["Time:DateTimeZone"]]);
