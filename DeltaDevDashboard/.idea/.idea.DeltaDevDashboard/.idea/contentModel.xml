@@ -13,6 +13,7 @@
           <e p="DashboardService.cs" t="Include" />
           <e p="GitHubService.cs" t="Include" />
           <e p="GitHubUpdateScheduledTask.cs" t="Include" />
+          <e p="HomeController.cs" t="Include" />
         </e>
         <e p="DeltaDevDashboard.AppServer.csproj" t="IncludeRecursive" />
         <e p="obj" t="ExcludeRecursive">
