@@ -26,5 +26,10 @@ namespace DeltaDevDashboard.AppServer.Dashboard
         {
             return await _dashboardRepository.GetProjectDueDate();
         }
+
+        public async Task<Instant> GetProjectStartDate()
+        {
+            return await _dashboardRepository.GetProjectStartDate();
+        }
     }
 }

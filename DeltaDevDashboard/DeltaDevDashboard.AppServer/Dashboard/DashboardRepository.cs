@@ -79,5 +79,10 @@ namespace DeltaDevDashboard.AppServer.Dashboard
         {
             return await _client.GetAsync<GitHubTargets>("github-targets");
         }
+
+        public async Task<Instant> GetProjectStartDate()
+        {
+            return await _client.GetAsync<Instant>("project:start-date");
+        }
     }
 }

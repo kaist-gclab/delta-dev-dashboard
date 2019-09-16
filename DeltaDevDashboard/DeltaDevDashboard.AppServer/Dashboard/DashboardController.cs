@@ -57,6 +57,7 @@ namespace DeltaDevDashboard.AppServer.Dashboard
             {
                 CurrentInstant = _clock.GetCurrentInstant(),
                 ProjectTitle = await _dashboardService.GetProjectTitle(),
+                ProjectStartDate = await _dashboardService.GetProjectStartDate(),
                 ProjectDueDate = await _dashboardService.GetProjectDueDate(),
                 Repositories = await _gitHubService.GetRepositories(),
                 GitHubStatistics = await _gitHubService.GetGitHubStatistics(),
@@ -69,6 +70,7 @@ namespace DeltaDevDashboard.AppServer.Dashboard
         {
             public Instant CurrentInstant { get; set; }
             public string ProjectTitle { get; set; }
+            public Instant ProjectStartDate { get; set; }
             public Instant ProjectDueDate { get; set; }
             public List<string> Repositories { get; set; }
             public GitHubStatistics GitHubStatistics { get; set; }
