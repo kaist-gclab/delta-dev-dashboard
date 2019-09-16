@@ -43,7 +43,7 @@ namespace DeltaDevDashboard.AppServer.Dashboard
             }
 
             var header = headers["Authorization"];
-            if (header.Count != 1 || header.First() != apiKey)
+            if (header.Count != 1 || header.First() != "Bearer " + apiKey)
             {
                 return NotFound();
             }
