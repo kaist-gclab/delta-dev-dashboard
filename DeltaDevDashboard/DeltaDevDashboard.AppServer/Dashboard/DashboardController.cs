@@ -61,7 +61,8 @@ namespace DeltaDevDashboard.AppServer.Dashboard
                 ProjectDueDate = await _dashboardService.GetProjectDueDate(),
                 Repositories = await _gitHubService.GetRepositories(),
                 GitHubStatistics = await _gitHubService.GetGitHubStatistics(),
-                GitHubTargets = await _gitHubService.GetGitHubTargets()
+                GitHubTargetsBegin = await _gitHubService.GetGitHubTargetsBegin(),
+                GitHubTargetsEnd = await _gitHubService.GetGitHubTargetsEnd()
             };
             return response;
         }
@@ -74,7 +75,8 @@ namespace DeltaDevDashboard.AppServer.Dashboard
             public Instant ProjectDueDate { get; set; }
             public List<string> Repositories { get; set; }
             public GitHubStatistics GitHubStatistics { get; set; }
-            public GitHubTargets GitHubTargets { get; set; }
+            public GitHubTargets GitHubTargetsBegin { get; set; }
+            public GitHubTargets GitHubTargetsEnd { get; set; }
         }
     }
 }

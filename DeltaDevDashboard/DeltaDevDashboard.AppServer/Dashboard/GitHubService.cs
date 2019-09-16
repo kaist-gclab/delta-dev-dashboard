@@ -137,9 +137,14 @@ namespace DeltaDevDashboard.AppServer.Dashboard
             return await _dashboardRepository.GetGitHubStatistics();
         }
 
-        public async Task<GitHubTargets> GetGitHubTargets()
+        public async Task<GitHubTargets> GetGitHubTargetsBegin()
         {
-            return await _dashboardRepository.GetGitHubTargets();
+            return await _dashboardRepository.GetGitHubTargetsBegin();
+        }
+        
+        public async Task<GitHubTargets> GetGitHubTargetsEnd()
+        {
+            return await _dashboardRepository.GetGitHubTargetsEnd();
         }
     }
 }

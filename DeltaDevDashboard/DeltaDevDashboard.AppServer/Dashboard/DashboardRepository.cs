@@ -75,9 +75,14 @@ namespace DeltaDevDashboard.AppServer.Dashboard
             await _client.Database.StringSetAsync("github-statistics", value);
         }
 
-        public async Task<GitHubTargets> GetGitHubTargets()
+        public async Task<GitHubTargets> GetGitHubTargetsBegin()
         {
-            return await _client.GetAsync<GitHubTargets>("github-targets");
+            return await _client.GetAsync<GitHubTargets>("github-targets-begin");
+        }
+        
+        public async Task<GitHubTargets> GetGitHubTargetsEnd()
+        {
+            return await _client.GetAsync<GitHubTargets>("github-targets-end");
         }
 
         public async Task<Instant> GetProjectStartDate()
