@@ -1,14 +1,24 @@
 import React from 'react';
-import './App.css';
 import Dashboard from './dashboard/Dashboard';
+import styled from 'styled-components';
+import { Colors } from '@blueprintjs/core';
+
+const Wrapper = styled.div`
+  background-color: ${Colors.DARK_GRAY3};
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+`;
 
 const App: React.FC = () => {
   return (
-    <div className="App">
-      <div className="App-header">
-        <Dashboard></Dashboard>
-      </div>
-    </div>
+    <Wrapper>
+      <Dashboard></Dashboard>
+    </Wrapper>
   );
 }
 
