@@ -1,11 +1,12 @@
 import React from 'react';
 import './App.css';
+import Dashboard from './dashboard/Dashboard';
 
 const App: React.FC = () => {
   return (
     <div className="App">
       <div className="App-header">
-        <h1>개발 상황판 표출 예정</h1>
+        <Dashboard></Dashboard>
       </div>
     </div>
   );

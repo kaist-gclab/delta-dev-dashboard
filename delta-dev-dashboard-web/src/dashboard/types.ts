@@ -1,17 +1,3 @@
-export const FETCH_DASHBOARD = 'FETCH_DASHBOARD';
-export const UPDATE_DASHBOARD = 'UPDATE_DASHBOARD';
-
-interface FetchDashboardAction {
-    type: typeof FETCH_DASHBOARD
-}
-
-interface UpdateDashboardAction {
-    type: typeof UPDATE_DASHBOARD
-    dashboard: DashboardModel
-}
-
-export type DashboardActionTypes = FetchDashboardAction | UpdateDashboardAction;
-
 export interface DashboardModel {
     currentInstant: Date,
     projectTitle: string,
@@ -26,7 +12,7 @@ export interface DashboardModel {
 interface GitHubStatistics {
     repositories: number,
     details: GitHubStatisticsDetail[],
-    updated: any,
+    updated: Date,
     isComplete: boolean,
     contributors: number,
 }
