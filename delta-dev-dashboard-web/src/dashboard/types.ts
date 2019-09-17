@@ -19,7 +19,7 @@ interface GitHubStatistics {
 
 interface GitHubStatisticsDetail {
     name: string,
-    commites: number,
+    commits: number,
     stargazers: number,
     contributors: number,
 }

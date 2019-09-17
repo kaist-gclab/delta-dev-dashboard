@@ -5,6 +5,8 @@ import styled from 'styled-components';
 import { Colors } from '@blueprintjs/core';
 import { formatDateTime } from './util';
 import Summary from './Summary';
+import TargetDetails from './TargetDetails';
+import Repositories from './Repositories';
 
 const Interval = 4096;
 
@@ -65,6 +67,9 @@ class Dashboard extends React.Component<Props> {
       <Title>{projectTitle}</Title>
       <Summary model={model} />
       <HR />
+      <TargetDetails model={model} />
+      <HR />
+      <Repositories model={model} />
       <CurrentInstant>갱신 시각: {formatDateTime(currentInstant)}</CurrentInstant>
     </Wrapper>;
   }
