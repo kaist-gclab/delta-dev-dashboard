@@ -7,6 +7,7 @@ import { formatDateTime } from './util';
 import Summary from './Summary';
 import TargetDetails from './TargetDetails';
 import Repositories from './Repositories';
+import TimeProgressBar from './TimeProgressBar';
 
 const Interval = 4096;
 
@@ -31,6 +32,7 @@ const Title = styled.div`
 const HR = styled.hr`
   width: 100%;
   border: 0;
+  margin: 0;
   height: 2px;
   background: ${Colors.GRAY1};
 `;
@@ -60,12 +62,14 @@ class Dashboard extends React.Component<Props> {
     if (!model) {
       return <h1>불러오는 중</h1>;
     }
-    const { projectTitle,
+    const {
+      projectTitle,
       currentInstant,
     } = model;
     return <Wrapper>
       <Title>{projectTitle}</Title>
       <Summary model={model} />
+      <TimeProgressBar model={model} />
       <HR />
       <TargetDetails model={model} />
       <HR />

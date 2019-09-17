@@ -13,7 +13,7 @@ const Container = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   & > div {
-    margin: 10px;
+    margin: 5px;
   }
 `;
 
