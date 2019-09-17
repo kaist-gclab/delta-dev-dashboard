@@ -38,7 +38,7 @@ const TargetDetails: React.FC<Props> = (props) => {
         begin={gitHubTargetsBegin.repositories}
         end={gitHubTargetsEnd.repositories}
         current={repositories.length}
-        description="관리 중인 저장소의 전체 개수입니다. 이 지표는 수동으로 처리됩니다." />
+        description="저장소의 전체 개수입니다. 이 지표는 수동으로 관리됩니다." />
       <TargetCard name="커밋 개수 합계" icon="git-commit"
         begin={gitHubTargetsBegin.commits}
         end={gitHubTargetsEnd.commits}
