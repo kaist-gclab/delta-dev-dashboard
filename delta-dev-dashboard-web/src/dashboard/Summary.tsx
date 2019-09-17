@@ -81,14 +81,14 @@ const Summary: React.FC<Props> = (props) => {
       <SummaryCardElement><Icon icon="calendar" /> 계획 기간 {getTotalDays(projectStartDate, projectDueDate)}일</SummaryCardElement>
     </SummaryCard>
     <SummaryCard icon="trending-up">
-      <SummaryCardTitle>시작 지표</SummaryCardTitle>
+      <SummaryCardTitle>당해 연도 시작 지표</SummaryCardTitle>
       <SummaryCardElement><Icon icon="git-repo" /> 저장소 {gitHubTargetsBegin.repositories}개</SummaryCardElement>
       <SummaryCardElement><Icon icon="git-commit" /> 커밋 {gitHubTargetsBegin.commits}개</SummaryCardElement>
       <SummaryCardElement><Icon icon="star" /> 스타 {gitHubTargetsBegin.stargazers}개</SummaryCardElement>
       <SummaryCardElement><Icon icon="people" /> 기여자 {gitHubTargetsBegin.contributors}명</SummaryCardElement>
     </SummaryCard>
     <SummaryCard icon="locate">
-      <SummaryCardTitle>목표 지표</SummaryCardTitle>
+      <SummaryCardTitle>당해 연도 목표 지표</SummaryCardTitle>
       <SummaryCardElement complete={currentRepositories >= gitHubTargetsEnd.repositories}><Icon icon="git-repo" /> 저장소 {currentRepositories} / {gitHubTargetsEnd.repositories}개</SummaryCardElement>
       <SummaryCardElement complete={currentCommits >= gitHubTargetsEnd.commits}><Icon icon="git-commit" /> 커밋 {currentCommits} / {gitHubTargetsEnd.commits}개</SummaryCardElement>
       <SummaryCardElement complete={currentStargazers >= gitHubTargetsEnd.stargazers}><Icon icon="star" /> 스타 {currentStargazers} / {gitHubTargetsEnd.stargazers}개</SummaryCardElement>
