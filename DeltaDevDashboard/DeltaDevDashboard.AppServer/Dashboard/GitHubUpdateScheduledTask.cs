@@ -9,7 +9,7 @@ namespace DeltaDevDashboard.AppServer.Dashboard
     public class GitHubUpdateScheduledTask : IScheduledTask
     {
         private readonly GitHubService _gitHubService;
-        public Duration Interval => Duration.FromMinutes(30);
+        public Duration Interval => Duration.FromMinutes(10);
 
         public GitHubUpdateScheduledTask(GitHubService gitHubService)
         {
