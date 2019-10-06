@@ -29,9 +29,15 @@ namespace DeltaDevDashboard.AppServer.Dashboard
 
         public async Task Update()
         {
-            await FetchGitHubStatistics();
-            var gitHubStatistics = await FetchGitHubStatistics();
-            await _dashboardRepository.SetGitHubStatistics(gitHubStatistics);
+            for (var i = 0; i < 2; i++)
+            {
+                var gitHubStatistics = await FetchGitHubStatistics();
+                await _dashboardRepository.SetGitHubStatistics(gitHubStatistics);
+                if (gitHubStatistics.IsComplete)
+                {
+                    break;
+                }
+            }
         }
 
         private async Task<GitHubStatistics> FetchGitHubStatistics()
