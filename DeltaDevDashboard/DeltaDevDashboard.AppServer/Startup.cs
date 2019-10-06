@@ -71,7 +71,12 @@ namespace DeltaDevDashboard.AppServer
             }
 
             app.UseRouting();
-            app.UseCors();
+
+            app.UseCors(builder => builder
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
+
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
     }
