@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 : "${DELTA_DEV_DASHBOARD_REDIS_PASSWORD?DELTA_DEV_DASHBOARD_REDIS_PASSWORD}"
 
 docker run -d \
