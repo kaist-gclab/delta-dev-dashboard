@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 : "${DELTA_DEV_DASHBOARD_REDIS_PASSWORD?DELTA_DEV_DASHBOARD_REDIS_PASSWORD}"
+: "${DELTA_DEV_DASHBOARD_REDIS_PORT?DELTA_DEV_DASHBOARD_REDIS_PORT}"
 
 docker run -d \
--p 10561:6379 \
+-p $DELTA_DEV_DASHBOARD_REDIS_PORT:6379 \
 --name delta-dev-dashboard-redis \
 --restart=unless-stopped \
 redis:5 \
