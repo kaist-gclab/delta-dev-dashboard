@@ -66,8 +66,12 @@ const ValueRight = styled.span`
 
 const TargetCard: React.FC<Props> = (props) => {
   const { begin, end, current, name, icon, description } = props;
-  const value = (current - begin) / (end - begin);
   const complete = current >= end;
+  const value = (current - begin) / (end - begin);
+  let progress = `누적 ${(current / end * 100).toFixed()}% 달성`;
+  if (end - begin > 0) {
+    progress = `당해 연도 ${(value * 100).toFixed()}%, ` + progress;
+  }
   return <Container>
     <TargetCardTitle icon={icon}>{name}</TargetCardTitle>
     <ProgressBar value={value} stripes={!complete} animate={!complete} intent={complete ? 'success' : 'danger'} />
@@ -77,7 +81,7 @@ const TargetCard: React.FC<Props> = (props) => {
         <Value>현재 {current}</Value>
         <Value>목표 {end}</Value>
       </ValueLeft>
-      <ValueRight>{(value * 100).toFixed(2)}% 달성</ValueRight>
+      <ValueRight>{progress}</ValueRight>
     </Values>
     <Description>{description}</Description>
   </Container>;
