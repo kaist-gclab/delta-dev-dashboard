@@ -1,6 +1,6 @@
 # https://dev.to/avatsaev/create-efficient-angular-docker-images-with-multi-stage-builds-1f3n
 
-FROM node:12-alpine as builder
+FROM node:13 as builder
 RUN mkdir /app
 WORKDIR /app
 COPY package.json package-lock.json ./
