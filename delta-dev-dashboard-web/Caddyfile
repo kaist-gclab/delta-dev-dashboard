@@ -1,0 +1,10 @@
+:80
+tls off
+root /app
+gzip
+log stdout
+errors stderr
+rewrite {
+  to {path} /
+}
+import auth
