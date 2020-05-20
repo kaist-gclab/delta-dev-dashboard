@@ -10,7 +10,8 @@ SET project:title '"PROJECT_TITLE"'
 SET project:due-date '"2019-01-01T09:00:00Z"'
 SET project:start-date '"2019-01-01T09:00:00Z"'
 SET repositories '["kaist-gclab/delta-dev-dashboard", "kaist-gclab/delta"]'
-SET github-targets '{"Repositories":1, "Stargazers":1, "Commits":1, "Contributors":1}'
+SET github-targets-begin '{"Repositories":0, "Stargazers":0, "Commits":0, "Contributors":0}'
+SET github-targets-end '{"Repositories":1, "Stargazers":1, "Commits":1, "Contributors":1}'
 GET github-statistics
 ```
 
