@@ -8,10 +8,7 @@ RUN npm ci
 COPY . ./
 RUN npm run build
 
-FROM abiosoft/caddy:no-stats
-ENV CADDYPATH /root/caddy
-ENV ACME_AGREE true
-ENV ENABLE_TELEMETRY false
-COPY Caddyfile /etc/Caddyfile
-COPY auth /etc/auth
+FROM caddy:2-alpine
+COPY Caddyfile /etc/caddy/Caddyfile
+COPY auth /etc/caddy/auth
 COPY --from=builder /app/build /app
