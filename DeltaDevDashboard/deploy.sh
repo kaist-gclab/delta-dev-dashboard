@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-docker save --output docker-image.tar delta-dev-dashboard-app-server && \
-scp ./docker-image.tar gclab-beta:~ && \
-cat remote.sh | ssh gclab-beta && \
-rm docker-image.tar
+IMAGE="delta-dev-dashboard-app-server"
+REMOTE="gclab-beta"
+
+docker save $IMAGE | ssh $REMOTE "docker load" && \
+cat remote.sh | ssh $REMOTE

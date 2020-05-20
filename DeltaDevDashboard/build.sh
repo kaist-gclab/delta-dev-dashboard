@@ -1,2 +1,4 @@
 #!/usr/bin/env bash
-docker build -t delta-dev-dashboard-app-server .
+IMAGE="delta-dev-dashboard-app-server"
+
+docker build -t $IMAGE .

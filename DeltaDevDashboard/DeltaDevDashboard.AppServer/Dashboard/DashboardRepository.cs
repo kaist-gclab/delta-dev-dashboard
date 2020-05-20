@@ -8,48 +8,48 @@ namespace DeltaDevDashboard.AppServer.Dashboard
 {
     public class DashboardRepository
     {
-        private readonly IRedisDefaultCacheClient _client;
+        private readonly IRedisDatabase _database;
         private readonly IClock _clock;
         private readonly JsonSerializerSettings _jsonSerializerSettings;
 
-        public DashboardRepository(IRedisDefaultCacheClient client, IClock clock,
+        public DashboardRepository(IRedisDatabase database, IClock clock,
             JsonSerializerSettings jsonSerializerSettings)
         {
-            _client = client;
+            _database = database;
             _clock = clock;
             _jsonSerializerSettings = jsonSerializerSettings;
         }
 
         public async Task<string> GetApiKey()
         {
-            return await _client.GetAsync<string>("api-key");
+            return await _database.GetAsync<string>("api-key");
         }
 
         public async Task<List<string>> GetRepositories()
         {
-            return await _client.GetAsync<List<string>>("repositories") ?? new List<string>();
+            return await _database.GetAsync<List<string>>("repositories") ?? new List<string>();
         }
 
         public async Task<string> GetProjectTitle()
         {
-            return await _client.GetAsync<string>("project:title");
+            return await _database.GetAsync<string>("project:title");
         }
 
         public async Task<Instant> GetProjectDueDate()
         {
-            return await _client.GetAsync<Instant>("project:due-date");
+            return await _database.GetAsync<Instant>("project:due-date");
         }
 
         public async Task<string> GetGitHubToken()
         {
-            return await _client.GetAsync<string>("github-token");
+            return await _database.GetAsync<string>("github-token");
         }
 
         public async Task<GitHubStatistics> GetGitHubStatistics()
         {
             try
             {
-                var result = await _client.GetAsync<GitHubStatistics>("github-statistics");
+                var result = await _database.GetAsync<GitHubStatistics>("github-statistics");
                 if (result != null)
                 {
                     return result;
@@ -72,22 +72,22 @@ namespace DeltaDevDashboard.AppServer.Dashboard
         public async Task SetGitHubStatistics(GitHubStatistics gitHubStatistics)
         {
             var value = JsonConvert.SerializeObject(gitHubStatistics, _jsonSerializerSettings);
-            await _client.Database.StringSetAsync("github-statistics", value);
+            await _database.Database.StringSetAsync("github-statistics", value);
         }
 
         public async Task<GitHubTargets> GetGitHubTargetsBegin()
         {
-            return await _client.GetAsync<GitHubTargets>("github-targets-begin");
+            return await _database.GetAsync<GitHubTargets>("github-targets-begin");
         }
         
         public async Task<GitHubTargets> GetGitHubTargetsEnd()
         {
-            return await _client.GetAsync<GitHubTargets>("github-targets-end");
+            return await _database.GetAsync<GitHubTargets>("github-targets-end");
         }
 
         public async Task<Instant> GetProjectStartDate()
         {
-            return await _client.GetAsync<Instant>("project:start-date");
+            return await _database.GetAsync<Instant>("project:start-date");
         }
     }
 }

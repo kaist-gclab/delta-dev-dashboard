@@ -55,7 +55,7 @@ namespace DeltaDevDashboard.AppServer
             services.AddSingleton(redisConfiguration);
             services.AddSingleton<IRedisCacheClient, RedisCacheClient>();
             services.AddSingleton<IRedisCacheConnectionPoolManager, RedisCacheConnectionPoolManager>();
-            services.AddSingleton<IRedisDefaultCacheClient, RedisDefaultCacheClient>();
+            services.AddSingleton(provider => provider.GetRequiredService<IRedisCacheClient>().GetDbFromConfiguration());
             var jsonSerializerSettings = new JsonSerializerSettings();
             jsonSerializerSettings.ConfigureJsonSerializerSettings();
             services.AddSingleton(jsonSerializerSettings);
