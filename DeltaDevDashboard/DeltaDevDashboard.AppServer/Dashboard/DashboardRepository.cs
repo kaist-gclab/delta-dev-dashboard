@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using NodaTime;
+using StackExchange.Redis;
 using StackExchange.Redis.Extensions.Core.Abstractions;
 
 namespace DeltaDevDashboard.AppServer.Dashboard
@@ -73,13 +74,14 @@ namespace DeltaDevDashboard.AppServer.Dashboard
         {
             var value = JsonConvert.SerializeObject(gitHubStatistics, _jsonSerializerSettings);
             await _database.Database.StringSetAsync("github-statistics", value);
+            await _database.SaveAsync(SaveType.BackgroundRewriteAppendOnlyFile);
         }
 
         public async Task<GitHubTargets> GetGitHubTargetsBegin()
         {
             return await _database.GetAsync<GitHubTargets>("github-targets-begin");
         }
-        
+
         public async Task<GitHubTargets> GetGitHubTargetsEnd()
         {
             return await _database.GetAsync<GitHubTargets>("github-targets-end");
