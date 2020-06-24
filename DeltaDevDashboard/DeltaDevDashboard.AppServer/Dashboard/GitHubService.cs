@@ -103,10 +103,10 @@ namespace DeltaDevDashboard.AppServer.Dashboard
             var text = await client.GetStringAsync(url);
             try
             {
-                var begin = text.IndexOf("<li class=\"commits\">", StringComparison.Ordinal);
+                var begin = text.IndexOf("<h2 class=\"sr-only\">Git stats</h2>", StringComparison.Ordinal);
                 var end = text.IndexOf("</li>", begin, StringComparison.Ordinal);
                 text = text.Substring(begin, end - begin);
-                var regex = new Regex(@"<span class=""num text-emphasized"">\s*?(\d+)\s*?</span>");
+                var regex = new Regex(@"<strong>(\d+)</strong>");
                 var match = regex.Match(text);
                 var commits = match.Groups[1].Value;
                 return int.Parse(commits);

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
@@ -74,7 +75,7 @@ namespace DeltaDevDashboard.AppServer.Dashboard
         {
             var value = JsonConvert.SerializeObject(gitHubStatistics, _jsonSerializerSettings);
             await _database.Database.StringSetAsync("github-statistics", value);
-            await _database.SaveAsync(SaveType.BackgroundRewriteAppendOnlyFile);
+            await _database.SaveAsync(SaveType.BackgroundSave);
         }
 
         public async Task<GitHubTargets> GetGitHubTargetsBegin()
