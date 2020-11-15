@@ -8,6 +8,7 @@ IMAGE="delta-dev-dashboard-app-server"
 (docker stop $IMAGE || true) && \
 (docker rm $IMAGE || true) && \
 docker run --init -d \
+--log-opt max-size=16m --log-opt max-file=8 \
 -e Redis__Password=$DELTA_DEV_DASHBOARD_REDIS_PASSWORD \
 -e Redis__Hosts__0__Host=$DELTA_DEV_DASHBOARD_REDIS_HOST \
 -e Redis__Hosts__0__Port=$DELTA_DEV_DASHBOARD_REDIS_PORT \
