@@ -1,17 +1,27 @@
-import { observable, flow } from 'mobx';
+import { runInAction, makeAutoObservable } from 'mobx';
 import { DashboardModel } from './types';
 import DashboardRepository from './repository';
 
-class DashboardStore {
-    @observable
-    dashboardModel?: DashboardModel;
+const Interval = 4096;
 
-    constructor(private dashboardRepository = DashboardRepository) {
+class DashboardStore {
+    dashboardModel?: DashboardModel;
+    dashboardRepository = DashboardRepository;
+
+    constructor() {
+        makeAutoObservable(this);
+        this.tick();
+        setInterval(() => { this.tick(); }, Interval);
     }
 
-    fetch = flow(function* (this: DashboardStore) {
-        this.dashboardModel = yield this.dashboardRepository.fetch();
-    })
+    tick() {
+        this.fetch();
+    }
+
+    async fetch() {
+        const dashboard = await this.dashboardRepository.fetch();;
+        runInAction(() => { this.dashboardModel = dashboard; });
+    }
 }
 
 export default DashboardStore;

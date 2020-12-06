@@ -2,6 +2,7 @@ import React from 'react';
 import Dashboard from './dashboard/Dashboard';
 import styled from 'styled-components';
 import { Colors } from '@blueprintjs/core';
+import { configure } from './dashboard/context';
 
 const Wrapper = styled.div`
   background-color: ${Colors.DARK_GRAY3};
@@ -22,4 +23,4 @@ const App: React.FC = () => {
   );
 }
 
-export default App;
+export default configure(App);

@@ -28,8 +28,8 @@ const Repositories: React.FC<Props> = (props) => {
   function* multilineRepositoryName(name: string) {
     for (let i = 0; i < name.length; i++) {
       if (name[i] === '/') {
-        yield '/'
-        yield <br />;
+        yield '/';
+        yield <br key={`BR#${i}`} />;
       } else {
         yield name[i];
       }
@@ -37,7 +37,7 @@ const Repositories: React.FC<Props> = (props) => {
   }
   return <Container>
     {repositories.map(r =>
-      <Repository elevation={Elevation.TWO}>
+      <Repository key={`REPO#${r}`} elevation={Elevation.TWO}>
         {Array.from(multilineRepositoryName(r))}
       </Repository>)}
   </Container>;

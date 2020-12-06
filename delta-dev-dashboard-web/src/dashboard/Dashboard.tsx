@@ -1,6 +1,5 @@
-import React from 'react';
-import { inject, observer } from 'mobx-react';
-import DashboardStore from './store';
+import React, { useContext } from 'react';
+import { observer } from 'mobx-react';
 import styled from 'styled-components';
 import { Colors } from '@blueprintjs/core';
 import { formatDateTime } from './util';
@@ -8,12 +7,7 @@ import Summary from './Summary';
 import TargetDetails from './TargetDetails';
 import Repositories from './Repositories';
 import TimeProgressBar from './TimeProgressBar';
-
-const Interval = 4096;
-
-interface Props {
-  dashboard?: DashboardStore
-}
+import { DashboardContext } from './context';
 
 const Wrapper = styled.div`
   height: 95vh;
@@ -43,40 +37,26 @@ const CurrentInstant = styled.div`
   color: ${Colors.GRAY1};
 `;
 
-@inject("dashboard")
-@observer
-class Dashboard extends React.Component<Props> {
-  interval!: number;
-  componentDidMount() {
-    this.tick();
-    this.interval = setInterval(this.tick, Interval);
-  }
-  componentWillUnmount() {
-    clearInterval(this.interval);
-  }
-  tick = () => {
-    this.props.dashboard!.fetch();
-  }
-  render() {
-    const model = this.props.dashboard!.dashboardModel;
-    if (!model) {
-      return <h1>불러오는 중</h1>;
-    }
-    const {
-      projectTitle,
-      currentInstant,
-    } = model;
-    return <Wrapper>
-      <Title>{projectTitle}</Title>
-      <Summary model={model} />
-      <TimeProgressBar model={model} />
-      <HR />
-      <TargetDetails model={model} />
-      <HR />
-      <Repositories model={model} />
-      <CurrentInstant>갱신 시각: {formatDateTime(currentInstant)}</CurrentInstant>
-    </Wrapper>;
-  }
-}
+export const Dashboard: React.FC = () => {
+  const dashboard = useContext(DashboardContext);
 
-export default Dashboard;
+  const model = dashboard.dashboardModel;
+
+  if (!model) {
+    return <h1>불러오는 중</h1>;
+  }
+
+  const { projectTitle, currentInstant } = model;
+  return <Wrapper>
+    <Title>{projectTitle}</Title>
+    <Summary model={model} />
+    <TimeProgressBar model={model} />
+    <HR />
+    <TargetDetails model={model} />
+    <HR />
+    <Repositories model={model} />
+    <CurrentInstant>갱신 시각: {formatDateTime(currentInstant)}</CurrentInstant>
+  </Wrapper>;
+};
+
+export default observer(Dashboard);
