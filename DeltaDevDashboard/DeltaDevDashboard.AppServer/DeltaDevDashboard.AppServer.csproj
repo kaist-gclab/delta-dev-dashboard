@@ -1,18 +1,19 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
     <PropertyGroup>
-        <TargetFramework>net50</TargetFramework>
+        <TargetFramework>net6.0</TargetFramework>
         <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
         <UserSecretsId>c6941074-51fa-467e-ae43-50ff52a4dfb8</UserSecretsId>
+        <LangVersion>default</LangVersion>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="JetBrains.Annotations" Version="2021.1.0" />
-        <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="5.0.8" />
-        <PackageReference Include="NodaTime" Version="3.0.5" />
+        <PackageReference Include="JetBrains.Annotations" Version="2021.3.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.0" />
+        <PackageReference Include="NodaTime" Version="3.0.9" />
         <PackageReference Include="NodaTime.Serialization.JsonNet" Version="3.0.0" />
-        <PackageReference Include="StackExchange.Redis" Version="2.2.62" />
-        <PackageReference Include="StackExchange.Redis.Extensions.Core" Version="7.1.1" />
-        <PackageReference Include="StackExchange.Redis.Extensions.Newtonsoft" Version="7.1.1" />
+        <PackageReference Include="StackExchange.Redis" Version="2.2.88" />
+        <PackageReference Include="StackExchange.Redis.Extensions.Core" Version="7.2.1" />
+        <PackageReference Include="StackExchange.Redis.Extensions.Newtonsoft" Version="7.2.1" />
     </ItemGroup>
 </Project>
