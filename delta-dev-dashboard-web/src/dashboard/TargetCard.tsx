@@ -74,7 +74,7 @@ const TargetCard: React.FC<Props> = (props) => {
   }
   return <Container>
     <TargetCardTitle icon={icon}>{name}</TargetCardTitle>
-    <ProgressBar value={value} stripes={!complete} animate={!complete} intent={complete ? 'success' : 'danger'} />
+    <ProgressBar value={!complete ? value : 1} stripes={!complete} animate={!complete} intent={complete ? 'success' : 'danger'} />
     <Values>
       <ValueLeft>
         <Value>시작 {begin}</Value>
