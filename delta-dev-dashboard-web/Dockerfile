@@ -1,6 +1,7 @@
 # https://dev.to/avatsaev/create-efficient-angular-docker-images-with-multi-stage-builds-1f3n
 
 FROM node:16-slim as builder
+RUN npm i -g pnpm
 RUN mkdir /app
 WORKDIR /app
 COPY pnpm-lock.yaml ./
