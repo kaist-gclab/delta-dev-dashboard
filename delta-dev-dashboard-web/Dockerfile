@@ -3,10 +3,11 @@
 FROM node:16-slim as builder
 RUN mkdir /app
 WORKDIR /app
-COPY package.json package-lock.json ./
-RUN npm ci
+COPY pnpm-lock.yaml ./
+RUN pnpm fetch --prod
 COPY . ./
-RUN npm run build
+RUN pnpm install --offline --prod
+RUN pnpm run build
 
 FROM caddy:2-alpine
 COPY Caddyfile /etc/caddy/Caddyfile
