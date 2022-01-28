@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@blueprintjs/core": "^3.52.0",
+    "@blueprintjs/icons": "^3.31.0",
     "@types/jest": "27.4.0",
     "@types/node": "17.0.13",
     "@types/react": "17.0.38",
