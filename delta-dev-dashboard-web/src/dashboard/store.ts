@@ -19,7 +19,7 @@ class DashboardStore {
     }
 
     async fetch() {
-        const dashboard = await this.dashboardRepository.fetch();;
+        const dashboard = await this.dashboardRepository.fetch();
         runInAction(() => { this.dashboardModel = dashboard; });
     }
 }
