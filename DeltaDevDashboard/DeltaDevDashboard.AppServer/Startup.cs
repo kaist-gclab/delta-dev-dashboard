@@ -32,7 +32,6 @@ namespace DeltaDevDashboard.AppServer
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers()
-                .SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
                 .AddNewtonsoftJson(options => options.SerializerSettings.ConfigureJsonSerializerSettings());
 
             services.AddSingleton<IClock>(SystemClock.Instance);
