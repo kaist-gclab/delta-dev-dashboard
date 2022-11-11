@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import styled from 'styled-components';
 import { H4, Callout, Tag, Icon, Colors } from '@blueprintjs/core';
 import { formatDate, getTotalDays, sum } from './util';
@@ -26,7 +26,7 @@ const SummaryCard = styled(Callout)`
   }
 `;
 
-const SummaryCardTitle: React.FC = (props) =>
+const SummaryCardTitle = (props: { children: ReactNode }) =>
   <div>
     <H4>{props.children}</H4>
   </div>
@@ -41,7 +41,7 @@ const SummaryCardElementTag = styled(Tag)`
 interface SummaryCardElementProps {
   complete?: boolean
 }
-const SummaryCardElement: React.FC<SummaryCardElementProps> = (props) => {
+const SummaryCardElement = (props: SummaryCardElementProps & { children: ReactNode }) => {
   function getIntent(complete?: boolean) {
     if (complete === true) {
       return 'success';

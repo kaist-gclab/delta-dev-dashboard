@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { observer } from 'mobx-react';
 import styled from 'styled-components';
 import { Callout, Colors, H4, ProgressBar, IconName, Icon, Tag } from '@blueprintjs/core';
@@ -38,7 +38,7 @@ const H4Title = styled(H4)`
   margin-left: 10px;
 `;
 
-const TargetCardTitle: React.FC<TargetCardTitleProps> = (props) =>
+const TargetCardTitle = (props: TargetCardTitleProps & { children: ReactNode }) =>
   <div>
     <TitleIcon icon={props.icon} />
     <H4Title>{props.children}</H4Title>
@@ -48,7 +48,7 @@ const Description = styled.span`
   font-size: 16px;
 `;
 
-const Value: React.FC = (props) => <Tag large={true}>{props.children}</Tag>;
+const Value = (props: { children: ReactNode }) => <Tag large={true}>{props.children}</Tag>;
 const Values = styled.div`
   display: flex;
   flex-direction: row;
