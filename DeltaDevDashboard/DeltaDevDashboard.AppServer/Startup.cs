@@ -51,10 +51,15 @@ namespace DeltaDevDashboard.AppServer
             services.AddSingleton<ScheduleHelper>();
 
             var redisConfiguration = _configuration.GetSection("Redis").Get<RedisConfiguration>();
+            if (redisConfiguration == null)
+            {
+                throw new InvalidOperationException(nameof(RedisConfiguration));
+            }
+
             services.AddSingleton(redisConfiguration);
-            services.AddSingleton<IRedisCacheClient, RedisCacheClient>();
-            services.AddSingleton<IRedisCacheConnectionPoolManager, RedisCacheConnectionPoolManager>();
-            services.AddSingleton(provider => provider.GetRequiredService<IRedisCacheClient>().GetDbFromConfiguration());
+            services.AddSingleton<IRedisClient, RedisClient>();
+            services.AddSingleton<IRedisConnectionPoolManager, RedisConnectionPoolManager>();
+            services.AddSingleton(provider => provider.GetRequiredService<IRedisClient>().GetDefaultDatabase());
             var jsonSerializerSettings = new JsonSerializerSettings();
             jsonSerializerSettings.ConfigureJsonSerializerSettings();
             services.AddSingleton(jsonSerializerSettings);
