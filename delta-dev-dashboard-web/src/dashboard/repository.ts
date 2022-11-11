@@ -4,7 +4,7 @@ import { DashboardModel } from './types';
 const ApiBase = 'https://api.devdashboard.delta.cqcqcqde.com/api/';
 
 // 웹 프론트엔드는 HTTPS 및 basic 인증으로 보호됩니다.
-const ApiKey = 'CeA0R4rR43ZcVU3c99h4QgbK5vUZcEhgGiWQMhCdDDWihmfSOFHG1uU3SmsuP6Qf';
+const ApiKey = 'SECRET';
 
 class DashboardRepository {
     private axios: AxiosInstance;
