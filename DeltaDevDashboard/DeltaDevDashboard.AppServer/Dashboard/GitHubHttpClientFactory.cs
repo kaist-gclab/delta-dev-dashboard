@@ -29,7 +29,7 @@ namespace DeltaDevDashboard.AppServer.Dashboard
             client.DefaultRequestHeaders.UserAgent.Add(ProductInfoHeaderValue.Parse("HttpClient"));
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic",
                 Convert.ToBase64String(Encoding.UTF8.GetBytes("username:" + token)));
-            await Task.Delay(750);
+            await Task.Delay(2048);
             return client;
         }
     }
