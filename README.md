@@ -3,6 +3,7 @@
 SW스타랩 &lt;3차원 기하 모델 프로세싱 프레임워크 개발> 개발 상황판
 
 ## 필요한 Redis 설정
+
 ```bash
 SET api-key '"TEST_API_KEY"'
 SET github-token '"TEST_GITHUB_TOKEN"'
@@ -16,6 +17,7 @@ GET github-statistics
 ```
 
 ## 예제 응답
+
 ```json
 {
   "currentInstant": "2019-08-01T15:00:33.6880463Z",
